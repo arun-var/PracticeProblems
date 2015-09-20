@@ -1,5 +1,6 @@
+package com.tw.intergalactic;
 
-public enum GalacticNumberTranslator {
+public enum RomanNumbers {
 	I (1),
 	V (5),
 	X(10),
@@ -10,7 +11,7 @@ public enum GalacticNumberTranslator {
 	
 	private final int decimalValue;
 	
-	private GalacticNumberTranslator(int value) {
+	private RomanNumbers(int value) {
 		this.decimalValue = value;
 	}
 
