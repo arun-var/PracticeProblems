@@ -27,13 +27,18 @@ public class LineClassifier {
 	}
 	
 	public int getLineType(String line){
+		
 		for(Line l: Line.values()){
-			pattern = Pattern.compile(l.getRegex());
-			matcher = pattern.matcher(line);
+			matcher = getMatcher(line,l.getRegex());
 			if(matcher.matches()){
 				return l.getType();
 			}
 		}
 		return -1;
+	}
+	
+	public Matcher getMatcher(String line, String regex){
+		pattern = Pattern.compile(regex);
+		return pattern.matcher(line);
 	}
 }

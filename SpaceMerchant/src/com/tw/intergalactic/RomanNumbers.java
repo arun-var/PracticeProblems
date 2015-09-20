@@ -18,4 +18,8 @@ public enum RomanNumbers {
 	public int getDecimalValue() {
 		return decimalValue;
 	}
+	
+	public int toNumber(String romanNum){
+		
+	}
 }
