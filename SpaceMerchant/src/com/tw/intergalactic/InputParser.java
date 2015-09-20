@@ -11,7 +11,7 @@ public class InputParser {
 		inputScanner = new Scanner(System.in);
 	}
 
-	public void Parse(){
+	public void parse(){
 		
 		while(inputScanner.hasNext())
 		{
@@ -31,14 +31,19 @@ public class InputParser {
 		switch(lineType){
 		
 		case 0:
-			
+			System.out.println("Assignment");
+			break;
 		case 1:
-			
+			System.out.println("Credits");
+			break;
 		case 2:
-			
+			System.out.println("how many");
+			break;
 		case 3:
-			
+			System.out.println("how much");
+			break;
 		default:
+			System.out.println("Wrong");
 			break;
 			
 		}
