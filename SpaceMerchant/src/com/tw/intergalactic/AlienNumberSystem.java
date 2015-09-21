@@ -14,7 +14,7 @@ public class AlienNumberSystem {
 	public void addAlienNumberDefToMap(String alienNum, String romanNum){
 		if(!alienToRomanMap.containsKey(alienNum)){
 			alienToRomanMap.put(alienNum, romanNum);
-			System.out.println("added "+alienNum+" to "+romanNum);
+			//System.out.println("added "+alienNum+" to "+romanNum);
 		}
 	}
 	
