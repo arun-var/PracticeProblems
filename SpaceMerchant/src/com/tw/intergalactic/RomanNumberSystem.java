@@ -47,13 +47,18 @@ public class RomanNumberSystem{
 
 	}
 
+	/**
+	 * As defined the repetitions are checked for
+	 * @param romanNum
+	 * @return
+	 */
 	private boolean checkRomanRules(String romanNum){
 		String regex ="";
-		String [] romanRuleRegexTests = {"(IIII+)","(XXXX+)", "(CCCC+)", "(MMMM+)", "(DD+)", "(LL+)", "(VV+)"}; 
+		String [] repetitionRegexTests = {"(IIII+)","(XXXX+)", "(CCCC+)", "(MMMM+)", "(DD+)", "(LL+)", "(VV+)"}; 
 
-		for(int i =0 ; i < romanRuleRegexTests.length; i ++)
+		for(int i =0 ; i < repetitionRegexTests.length; i ++)
 		{
-			regex = romanRuleRegexTests[i];
+			regex = repetitionRegexTests[i];
 			Matcher m = lineClassifier.getMatcher(romanNum, regex);
 
 			if(m.matches())
@@ -65,6 +70,11 @@ public class RomanNumberSystem{
 		return true;
 	}
 
+	/**
+	 * The subtraction rules as defined.
+	 * @param numbers
+	 * @return false if any rule is broken
+	 */
 	private boolean checkRomanSubstractionRules(List<Integer> numbers){
 		int currentValue;
 		int nextValue;
@@ -106,6 +116,12 @@ public class RomanNumberSystem{
 		return true;
 	}
 
+	/**
+	 * 
+	 * @param romanNum
+	 * @return the array of individual Roman numbers converted to their
+	 * decimal equivalent with the appropriate sign based on the rules
+	 */
 	private List<Integer> getSignCorrectedRomanToDecimalExpansion(String romanNum){
 		char[] romanNumerals = romanNum.toCharArray();
 		List<Integer> numbers = new ArrayList<Integer>();

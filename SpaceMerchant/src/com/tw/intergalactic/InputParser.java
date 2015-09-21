@@ -29,7 +29,7 @@ public class InputParser {
 	}
 	
 	/**
-	 * 
+	 * Assumption: The roman number definitions are present at the beginning
 	 * @param line
 	 * @return Depending on the line Type process the line
 	 */
