@@ -47,6 +47,10 @@ public class Item {
 		itemValueMap.put(itemName, unitItemValue);
 	}
 	
+	public boolean hasItem(String itemName){
+		return itemValueMap.containsKey(itemName);
+	}
+	
 	public double getUnitItemValue(String itemName){
 		double value =  itemValueMap.get(itemName);
 		return value;

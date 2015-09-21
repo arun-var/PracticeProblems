@@ -59,16 +59,16 @@ public class RomanNumberSystem{
 			if(m.matches())
 			{
 				System.out.println("The number entered violates Roman Number repitition constraints.");
-				return true;
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 
 	private boolean checkRomanSubstractionRules(List<Integer> numbers){
 		int currentValue;
 		int nextValue;
-		for(int i=0;i<numbers.size();i++){
+		for(int i=0;i<numbers.size()-1;i++){
 			currentValue = numbers.get(i);
 			nextValue = numbers.get(i+1);
 
@@ -84,26 +84,26 @@ public class RomanNumberSystem{
 				if(nextValue>RomanNumbers.I.getDecimalValue()
 						&& nextValue!=RomanNumbers.V.getDecimalValue()
 						&& nextValue!=RomanNumbers.X.getDecimalValue()){
-					return true;
+					return false;
 				}
 				break;
 			case 10:
 				if(nextValue>RomanNumbers.X.getDecimalValue()
 						&& nextValue!=RomanNumbers.L.getDecimalValue()
 						&& nextValue!=RomanNumbers.C.getDecimalValue()){
-					return true;
+					return false;
 				}
 				break;
 			case 100:
 				if(nextValue>RomanNumbers.C.getDecimalValue()
 						&& nextValue!=RomanNumbers.D.getDecimalValue()
 						&& nextValue!=RomanNumbers.M.getDecimalValue()){
-					return true;
+					return false;
 				}
 				break;
 			}
 		}
-		return false;
+		return true;
 	}
 
 	private List<Integer> getSignCorrectedRomanToDecimalExpansion(String romanNum){
@@ -134,7 +134,7 @@ public class RomanNumberSystem{
 				break;
 			}
 		}
-		for(int i=0;i<numbers.size();i++){
+		for(int i=0;i<numbers.size()-1;i++){
 			int currentValue = numbers.get(i);
 			int nextValue = numbers.get(i+1);
 			if(currentValue<nextValue){
