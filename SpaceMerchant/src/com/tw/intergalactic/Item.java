@@ -9,13 +9,13 @@ public class Item {
 	private Map<String, Double> itemValueMap;
 	private LineClassifier lineClassifier;
 	private AlienNumberSystem alienNumberSystem;
-	private RomanNumbers romanNumberSystem;
+	private RomanNumberSystem romanNumberSystem;
 	
-	public Item(AlienNumberSystem alienNumberSystem,RomanNumbers romanNumberSystem) {
+	public Item(AlienNumberSystem alienNumberSystem,RomanNumberSystem romanNumberSystem) {
 		itemValueMap = new HashMap<String, Double>();
 		lineClassifier = LineClassifier.getInstance();
-		alienNumberSystem = alienNumberSystem;
-		romanNumberSystem = romanNumberSystem;
+		this.alienNumberSystem = alienNumberSystem;
+		this.romanNumberSystem = romanNumberSystem;
 	}
 
 	public void processItemInfo(String line){
