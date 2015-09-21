@@ -25,38 +25,21 @@ public enum RomanNumbers {
 	}
 	
 	public int toNumber(String romanNum){
-		char[] romanNumerals = romanNum.toCharArray();
-		List<Integer> numbers = new ArrayList<Integer>();
 		
+		List<Integer> numbers = new ArrayList<Integer>();
+		int returnValue=0;
 		if(checkRomanRules(romanNum)){
-			for(char c:romanNumerals){
-				switch(c){
-				case 'I':
-					numbers.add(RomanNumbers.I.getDecimalValue());
-					break;
-				case 'V':
-					numbers.add(RomanNumbers.V.getDecimalValue());
-					break;
-				case 'X':
-					numbers.add(RomanNumbers.X.getDecimalValue());
-					break;
-				case 'L':
-					numbers.add(RomanNumbers.L.getDecimalValue());
-					break;
-				case 'C':
-					numbers.add(RomanNumbers.C.getDecimalValue());
-					break;
-				case 'D':
-					numbers.add(RomanNumbers.D.getDecimalValue());
-					break;
-				case 'M':
-					numbers.add(RomanNumbers.M.getDecimalValue());
-					break;
+			numbers = getSignCorrectedRomanToDecimalExpansion(romanNum);
+			if(checkRomanSubstractionRules(numbers)){
+				for(int i : numbers)
+				{
+					returnValue += i;
 				}
+				return returnValue;	
 			}
 		}
 		
-		
+		return returnValue;
 		
 		
 	}
@@ -77,5 +60,76 @@ public enum RomanNumbers {
 			}
 		}
 		return false;
+	}
+	
+	private boolean checkRomanSubstractionRules(List<Integer> numbers){
+		int currentValue;
+		int nextValue;
+		for(int i=0;i<numbers.size();i++){
+			currentValue = numbers.get(i);
+			nextValue = numbers.get(i+1);
+			switch(Math.abs(currentValue)){
+			case 1://Case I
+				if(nextValue>RomanNumbers.I.getDecimalValue()
+						&& nextValue!=RomanNumbers.V.getDecimalValue()
+						&& nextValue!=RomanNumbers.X.getDecimalValue()){
+					return true;
+				}
+				break;
+			case 10:
+				if(nextValue>RomanNumbers.X.getDecimalValue()
+						&& nextValue!=RomanNumbers.L.getDecimalValue()
+						&& nextValue!=RomanNumbers.C.getDecimalValue()){
+					return true;
+				}
+				break;
+			case 100:
+				if(nextValue>RomanNumbers.C.getDecimalValue()
+						&& nextValue!=RomanNumbers.D.getDecimalValue()
+						&& nextValue!=RomanNumbers.M.getDecimalValue()){
+					return true;
+				}
+				break;
+			}
+		}
+		return false;
+	}
+	
+	private List<Integer> getSignCorrectedRomanToDecimalExpansion(String romanNum){
+		char[] romanNumerals = romanNum.toCharArray();
+		List<Integer> numbers = new ArrayList<Integer>();
+		for(char c:romanNumerals){
+			switch(c){
+			case 'I':
+				numbers.add(RomanNumbers.I.getDecimalValue());
+				break;
+			case 'V':
+				numbers.add(RomanNumbers.V.getDecimalValue());
+				break;
+			case 'X':
+				numbers.add(RomanNumbers.X.getDecimalValue());
+				break;
+			case 'L':
+				numbers.add(RomanNumbers.L.getDecimalValue());
+				break;
+			case 'C':
+				numbers.add(RomanNumbers.C.getDecimalValue());
+				break;
+			case 'D':
+				numbers.add(RomanNumbers.D.getDecimalValue());
+				break;
+			case 'M':
+				numbers.add(RomanNumbers.M.getDecimalValue());
+				break;
+			}
+		}
+		for(int i=0;i<numbers.size();i++){
+			int currentValue = numbers.get(i);
+			int nextValue = numbers.get(i+1);
+			if(currentValue<nextValue){
+				numbers.set(i, -currentValue);
+			}
+		}
+		return numbers;
 	}
 }
