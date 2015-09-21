@@ -68,6 +68,14 @@ public enum RomanNumbers {
 		for(int i=0;i<numbers.size();i++){
 			currentValue = numbers.get(i);
 			nextValue = numbers.get(i+1);
+			
+			if( currentValue == - RomanNumbers.V.getDecimalValue() 
+					|| currentValue == -RomanNumbers.L.getDecimalValue()
+					|| currentValue == - RomanNumbers.D.getDecimalValue())
+			{
+				return false;
+			}
+			
 			switch(Math.abs(currentValue)){
 			case 1://Case I
 				if(nextValue>RomanNumbers.I.getDecimalValue()
