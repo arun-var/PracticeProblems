@@ -71,7 +71,7 @@ public class RomanNumberSystem{
 	}
 
 	/**
-	 * The subtraction rules as defined.
+	 * The subtraction rules as defined by problem.
 	 * @param numbers
 	 * @return false if any rule is broken
 	 */
