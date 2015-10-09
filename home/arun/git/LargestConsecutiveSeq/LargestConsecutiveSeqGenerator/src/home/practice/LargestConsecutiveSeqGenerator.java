@@ -9,7 +9,11 @@ public class LargestConsecutiveSeqGenerator {
 	public static void main(String args[]) {
 		int[] array = {2,3,4,6,7,21,22,1,27};
 		
-		//HashMap<Integer, Integer> consecutiveNumList = new HashMap<Integer, Integer>();
+		findLargestConsecutiveSequence(array);
+		
+	}
+	
+	public static void findLargestConsecutiveSequence(int[] array){
 		HashSet<Integer> setNumbers = new HashSet<Integer>();
 		for(int i=0;i<array.length;i++){
 			setNumbers.add(array[i]);
@@ -51,20 +55,7 @@ public class LargestConsecutiveSeqGenerator {
 	           }
 		}
 		
-//		Iterator<Integer> itr = consecutiveNumList.keySet().iterator();
-//		int maxSize = 0;
-//		int minVal = 0;
-//		System.out.println("******************");
-//		while(itr.hasNext()){
-//			int currVal = itr.next();
-//			//minVal = currVal;
-//			int size = consecutiveNumList.get(currVal);
-//			System.out.println("curr size"+currVal+" "+size);
-//			maxSize = size>maxSize?size:maxSize;
-//			if(maxSize==size) minVal=currVal;
-//		}
-		
-		//System.out.println("min "+minVal+" maxlen "+maxSize);
+
 		System.out.println("min "+start+" maxlen "+max);
 		for(int j=start;j<=max;j++){
 			System.out.println(j+" ");
